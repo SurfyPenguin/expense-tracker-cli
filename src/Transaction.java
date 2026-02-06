@@ -1,9 +1,9 @@
 import java.time.LocalDate;
 
 public abstract class Transaction {
-    private double amount;
-    private String category;
-    private LocalDate date;
+    private final double amount;
+    private final String category;
+    private final LocalDate date;
 
     public Transaction(double amount, String category, LocalDate date) {
         if (amount <= 0) {

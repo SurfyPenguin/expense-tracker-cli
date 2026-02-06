@@ -26,33 +26,29 @@ public class Main {
                     try {
                         Transaction expense = getExpenseFromUser(scanner);
                         accountManager.addTransaction(expense);
-                        break;
-
                     } catch (IllegalArgumentException e) {
                         System.out.println("Error: Amount must be positive");
-                        break;
                     } catch (InputMismatchException e) {
                         System.out.println("Error: Please provide appropriate input type");
                         scanner.nextLine();
-                        break;
                     }
+                    break;
 
                 case 2:
-                    System.out.printf("%nTRANSACTIONS%n%n");
+                    System.out.printf("%nTRANSACTIONS%n");
                     accountManager.displayTransactions();
                     break;
 
                 case 3:
-                    System.out.printf("%nTOTAL%n");
                     System.out.printf("Total Expenses: %.2f%n", accountManager.getTotalExpenses());
                     break;
 
                 case 4:
-                    System.out.printf("%nExiting...%n");
+                    System.out.println("Exiting...");
                     System.exit(0);
 
                 default:
-                    System.out.printf("%nInvalid option. Please try again!%n");
+                    System.out.println("Invalid option. Please try again!");
                     break;
             }
         }

@@ -19,12 +19,12 @@ public class AccountManager {
 
     void displayTransactions() {
         StringBuilder tableBuilder = new StringBuilder();
-        tableBuilder.append(String.format("amount — category — date%n"));
+        tableBuilder.append(String.format("%-10s %-10s %-10s%n", "Amount", "Category", "Date"));
 
         for (final Transaction transaction: transactions) {
             tableBuilder.append(
                     String.format(
-                            "%.2f — %s — %s%n",
+                            "%-10.2f %-10s %-10s%n",
                             transaction.getAmount(),
                             transaction.getCategory(),
                             transaction.getDate().toString()

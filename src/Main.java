@@ -26,8 +26,10 @@ public class Main {
                     try {
                         Transaction expense = getExpenseFromUser(scanner);
                         accountManager.addTransaction(expense);
+
                     } catch (IllegalArgumentException e) {
                         System.out.println("Error: Amount must be positive");
+
                     } catch (InputMismatchException e) {
                         System.out.println("Error: Please provide appropriate input type");
                         scanner.nextLine();

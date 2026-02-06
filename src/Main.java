@@ -4,30 +4,24 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int option = 0;
         AccountManager accountManager = new AccountManager();
         Scanner scanner = new Scanner(System.in);
-        StringBuilder menuBuilder = new StringBuilder();
+        String menu = String.format("%n1. Add Expense%n2. View Transaction%n3. View Total%n4. Exit");
 
-        menuBuilder.append(String.format("%nMENU%n"));
-        menuBuilder.append(
-                String.format("1. Add Expense%n" +
-                        "2. View Transactions%n" +
-                        "3. View Total%n" +
-                        "4. Exit")
-        );
         while (true) {
-            System.out.println(menuBuilder);
+            int choice = -1;
+            System.out.println(menu);
+            System.out.print("Choose: ");
 
             try {
-                option = scanner.nextInt();
+                choice = scanner.nextInt();
                 scanner.nextLine();
             } catch (InputMismatchException e) {
-                System.out.println("Wrong Option!: " + e.getMessage());
+                System.out.println("Error: Please enter a number (1–4)");
                 scanner.nextLine();
             }
 
-            switch (option) {
+            switch (choice) {
                 case 1:
                     try {
                         System.out.print("Amount: ");
@@ -43,10 +37,10 @@ public class Main {
                         break;
 
                     } catch (IllegalArgumentException e) {
-                        System.out.println("Error: " + e.getMessage());
+                        System.out.println("Error: Amount must be positive");
                         break;
                     } catch (InputMismatchException e) {
-                        System.out.println("Wrong input type provided: " + e.getMessage());
+                        System.out.println("Error: Please provide appropriate input type");
                         scanner.nextLine();
                         break;
                     }
@@ -66,7 +60,7 @@ public class Main {
                     System.exit(0);
 
                 default:
-                    System.out.printf("%nOption is not valid. Please try again!%n");
+                    System.out.printf("%nInvalid option. Please try again!%n");
                     break;
             }
         }

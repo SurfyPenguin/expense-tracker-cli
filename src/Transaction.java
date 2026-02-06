@@ -6,7 +6,11 @@ public abstract class Transaction {
     private LocalDate date;
 
     public Transaction(double amount, String category, LocalDate date) {
-        this.amount = (amount < 0) ? 0 : amount;
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Transaction amount must be greater than zero");
+        }
+
+        this.amount = amount;
         this.category = category;
         this.date = date;
     }

@@ -24,15 +24,7 @@ public class Main {
             switch (choice) {
                 case 1:
                     try {
-                        System.out.print("Amount: ");
-                        double amount = scanner.nextDouble();
-                        scanner.nextLine();
-
-                        System.out.print("Category: ");
-                        String category = scanner.nextLine();
-
-                        LocalDate date = LocalDate.now();
-                        Transaction expense = new Expense(amount, category, date);
+                        Transaction expense = getExpenseFromUser(scanner);
                         accountManager.addTransaction(expense);
                         break;
 
@@ -64,5 +56,18 @@ public class Main {
                     break;
             }
         }
+    }
+
+    public static Transaction getExpenseFromUser(Scanner scanner) {
+        System.out.print("Amount: ");
+        double amount = scanner.nextDouble();
+        scanner.nextLine();
+
+        System.out.print("Category: ");
+        String category = scanner.nextLine();
+
+        LocalDate date = LocalDate.now();
+
+        return new Expense(amount, category, date);
     }
 }

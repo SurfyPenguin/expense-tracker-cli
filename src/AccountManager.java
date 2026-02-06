@@ -32,6 +32,6 @@ public class AccountManager {
             );
         }
         String table = tableBuilder.toString();
-        System.out.println(table);
+        System.out.print(table);
     }
 }

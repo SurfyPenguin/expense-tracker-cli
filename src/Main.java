@@ -3,10 +3,16 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
+        final String fileName = "expenses.csv";
+
         AccountManager accountManager = new AccountManager();
         Scanner scanner = new Scanner(System.in);
-        String menu = String.format("%n1. Add Expense%n2. View Transaction%n3. View Total%n4. Exit");
+        String menu = String.format("%n1. Add Expense%n2. View Transactions%n3. View Total%n4. Exit");
+
+        // load expenses
+        accountManager.loadFromFile(fileName);
 
         while (true) {
             int choice = -1;

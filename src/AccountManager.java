@@ -1,8 +1,8 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class AccountManager {
     private final List<Transaction> transactions = new ArrayList<>();
@@ -53,6 +53,29 @@ public class AccountManager {
             }
         } catch (IOException e) {
             System.out.println("Failed to save message" + e.getMessage());
+        }
+    }
+
+    public void loadFromFile(String fileName) {
+        File file = new File(fileName);
+        if (!file.exists()) return; // prevents crash on first run
+
+        try (Scanner fileScanner = new Scanner(file)) {
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+                String[] parts = line.split(",");
+
+                if (parts.length == 3) {
+                    double amount = Double.parseDouble(parts[0]);
+                    String category = parts[1];
+                    LocalDate date = LocalDate.parse(parts[2]);
+
+                    transactions.add(new Expense(amount, category, date));
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error loading data: " + e.getMessage());
         }
     }
 }

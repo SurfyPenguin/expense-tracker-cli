@@ -46,6 +46,7 @@ public class Main {
                     break;
 
                 case 4:
+                    accountManager.saveToFile("expenses.csv");
                     System.out.println("Exiting...");
                     System.exit(0);
 

@@ -6,6 +6,7 @@ out/
 
 ### data files
 *.csv
+.idea
 
 ### Eclipse ###
 .apt_generated
